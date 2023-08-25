@@ -11,10 +11,6 @@ const adminMiddle = (req, res, next) =>{
      * }
      */
 
-    
-    if(req.errors){
-        res.status(404).send(req.errors.mapped().user.msg)
-    }
 
     const userQuery = req.query.user;
 

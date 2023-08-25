@@ -1,16 +1,22 @@
-const { body, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const listaValidacion = [
-    body('user').notEmpty().withMessage('Debe ingresar una búsqueda')
+    check('user').notEmpty().withMessage('Debes ingresar un nombre válido')
 ]
+
 
 const validarErrores = ( req, res, next ) => {
 
     const errors = validationResult(req);
 
-    req.errors = errors
+    if(errors.isEmpty()){
+        next()
+    }else{
+        res.render('index',{
+            errors: errors.mapped()
+        })
+    }
 
-    next()
 }
 
 
