@@ -14,7 +14,9 @@ const validarErrores = ( req, res, next ) => {
 
     // Sino, renderizamos index con los errores y no pasamos al otro middleware
 
+    /****** BORRAR *******/
     req.errors = errors
+    /******************* */
 
     next()
 }
