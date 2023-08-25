@@ -11,6 +11,10 @@ const adminMiddle = (req, res, next) =>{
      * }
      */
 
+    
+    if(req.errors){
+        res.status(404).send(req.errors.mapped().user.msg)
+    }
 
     const userQuery = req.query.user;
 
@@ -23,15 +27,6 @@ const adminMiddle = (req, res, next) =>{
 
         res.send('No tiene permiso de administrador')
     }
-
-    
-
-    // if(adminFind){
-    //     req.admin = true
-    // }else{
-    //     req.admin = false
-    // }
-
 
 
 }
